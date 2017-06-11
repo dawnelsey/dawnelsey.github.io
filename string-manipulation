@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="String Manipulation" content="String Manipulation">
+<meta name="String manipulation
+" content="string manipulation">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+/**
+ * STRING MANIPULATION
+ *
+ *  A function called reverseString takes a 
+ *  String as its only input and returns a new String 
+ *  representing the input String reversed.  
+ * 
+ */
+function reverseString(input) {
+    var newString = "";   // Declare newStringas a variable.  //
+/*    A for loop is used to manipulate the input string to its reverse order.
+*    The for loop begins at the end of the given input and decreases as it
+*    gets to the begining of the input.
+*    of the input. 
+*/
+    for (var i = input.length - 1; i >= 0; i--) {
+/*  The variable newString collects the output that is returned from
+*   the reverse string function's input.
+*/
+    newString += input[i];
+    }
+    return newString; 
+}
+
+
+
+
+// DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
+module.exports.reverseString = reverseString;
+</body>
+</html>

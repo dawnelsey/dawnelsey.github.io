@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="operators" content="Operators">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+/*
+ *  OPERATORS
+ *
+ *
+ *  Writes a Function called fizzBuzz that prints the numbers from 1 to 100.
+ *  BUT, for multiples of three print “Fizz” instead of the number.
+ *  AND for the multiples of five print “Buzz”.
+ *  FINALLY, for numbers which are multiples of both three and five print “FizzBuzz”.
+ * 
+*/
+function fizzBuzz() {
+/*    
+*   Assignment operators are used to assign values to JavaScript variables.
+*   The following statement assigns the number 1 to the variable 'i'.
+*   'i' is then increasesd by 1 and compared to 100. 
+*   Comparison operators are used in logical statements to determine equality 
+*   or difference between variables or values.
+*
+*/
+  for (var i = 1; i <= 100; i++) 
+    {
+/*
+*   Logical operators are used to determine the logic between variables or values.
+*   The logical operator && is used to print FizzBuzz only if BOTH of the conditions are true.
+*                                      
+*/
+    if (!(i % 3) && i % 5 == 0) 
+        console.log ("FizzBuzz");
+/*  
+*   Arithmetic operators are used to perform arithmetic 
+*   between variables and/or values. The statements 'i % 3' and 'i % 5' use the 
+*   the binary operator % to perform 2 arithmetic operations with one operand. First it divides 3 and 5 
+*   into i then it compares the remainder to zero. If the
+*   remainders are equal to zero Fizz or Buzz prints to the console.
+*/
+    else if (i % 3 == 0) 
+        console.log ("Fizz");
+    else if (i % 5 == 0) 
+        console.log ("Buzz");
+/*
+*   If the number is not a multiple of 3 or 5 the number prints to the console.
+*/    
+    else 
+        console.log (i);
+    }
+}
+ 

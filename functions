@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="functions" content="Functions">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+/*
+ * FUNCTIONS are programs with programs.
+ * 
+ * 1. Functions must first be declared by using the following syntax.
+ *        function name(parameter1, parameter2, parameter3) {
+ *           code to be executed
+ *          }
+ *    Function parameters are the names listed in the function definition (endWith).
+ *    Function arguments are the real values received by the function when it is invoked.
+ *    Inside the function, the arguments (the parameters) behave as local variables.
+ */
+function createEndsWithFilter(endsWith) {
+ /*
+ * 2. Then it can be executed by calling the function with the return statement.
+ *     The function createEndsWithFilter returns the function lastLetter that 
+ *     tests whether a given String endsWith the ends with character zyx.
+ */    
+     return function lastLetter(zyx) {
+        return zyx[zyx.length -1] == endsWith[endsWith.length - 1];
+            };  
+        }
+</body>
+</html>
+/*
+*    Primitive (simple) values are passed to a function BY COPY, complex by reference.
+*    Scope: Functions can see and modify variables in parent or global scopes. The inverse is NOT true.
+*    Closures: Functions form closures around the data they house. If an object returned from the Function
+*    and is held in memory somewhere (referenced), that closure stays ALIVE, and data can continue to exist in these closures. 
+*/

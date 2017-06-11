@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="#control flow" content="Control flow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+/** 
+ * The Greeter App uses if, else-if and else, AND depending on the hour of the day, 
+ * writes a greeting program that prints a greeting to the screen.
+ */
+
+function greeter(hour) {
+/* Creates a function greeter with hour as its argument. */ 
+    if (hour < 12){
+/* The if statement compares the value of hour to 12. If hour is less than 12
+ * the next statement prints Good Morning to the console. */
+        console.log("Good Morning!");
+    } else if (hour < 17) {  
+/* If hour is not less than 12 the if else statement compares hour to determine
+ *if it is less than 17. If so, Good afternoon is sent to the console. */
+        console.log("Good Afternoon!");
+    } else if (hour < 22) {              
+            console.log("Good Evening!");
+/* If hour is less than 22 but greater than 17 Good Evening
+ * is sent to the console. */
+    } else {
+            console.log("Good Night!");
+/* If hour is greater than 22 Good Night is sent to the console. */
+        }
+}
+greeter(11); // This statement is used to change the value of hour in the function greeter, */
+
+module.exports.greeter = greeter;
+
+
+</body>
+</html>

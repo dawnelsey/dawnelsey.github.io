@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Dawn's Amazing Website</title>
-        <style type="text/css">
+   <style>
             body {
                 background: rgb(125, 198, 205);
                 color: rgb(45, 45, 45);
@@ -12,18 +12,18 @@
             header {
                 font-size: 1.5em;
                 font-weight: bold;
-            }     
-            h1 {
-                margin: 10px;
             }
             #all-contents {
                 max-width: 800px;
                 margin: auto;
             }
+    
             /* navigation menu */
             nav {
-                background: rgb(239, 80, 41);
+               
+                background: rgb(280, 80, 41);
                 margin: 0 auto;
+                margin-bottom: 20px;
                 display: flex;
                 padding: 10px;
             }
@@ -44,32 +44,25 @@
                 text-decoration: none;
                 color: #fff;
             }
+    
             /* main container area beneath menu */
             main {
                 background: rgb(245, 238, 219);
                 display: flex;
             }
+            .sidebar {
+                margin-right: 25px;
+                padding: 10px;
+            }
+            .sidebar img {
+                width: 200px;
+            }
             .content {
                 flex: 1;
                 padding: 15px;
             }
-            /* portfolio styles */
-            #portfolio {
-                list-style-image: none;
-                padding-left: 0;
-            }
-            portfolio li {
-                background: #fff;
-                padding: 10px;
-                border-radius: 10px;
-                margin-bottom: 10px;
-            }
-            #portfolio li:hover {
-                background: #eee;
-            }
-            #porfolio a {
-                text-decoration: none;
-                color: #454545;
+            .interests header {
+                font-size: 1.25em;
             }
         </style>
     </head>

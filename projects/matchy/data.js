@@ -38,7 +38,7 @@ console.log (noises[noises.length -1]);
 
 
 for (var i = 0; i < noises.length; i++){
-  animal.noises.push(noises[i])
+  animal.noises.push(noises[i]);
 }
   console.log (animal.noises);
 

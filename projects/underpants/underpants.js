@@ -25,11 +25,12 @@ window._ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
+
 _.identity = function(value) {
   return value;  
 };
 
-/** _.typeOf()
+/** _.typeOf() 
 * Arguments:
 *   1) Anything
 * Objectives:
@@ -48,13 +49,14 @@ _.identity = function(value) {
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-// _.typeOf() = function(value) {
-//     if(Array.isArray(value)) {return 'array';}
-//     if(value === 'null') {return 'null';}
-//     if(value === instanceOfDate) {return 'date';}
-//       return typeOf(value);
-// };
 
+_.typeOf = function(value) {
+    if(Array.isArray(value)) return 'array';
+    if(value === null || value === 'object') return 'null';
+    if(value instanceof Date) return 'date';
+    if(value === undefined) return "undefined";
+      return typeof value;
+};
 
 /** _.first()
 * Arguments:
@@ -72,15 +74,12 @@ _.identity = function(value) {
 *   _.first(["a","b","c"], 2) -> ["a", "b"]
 *   _.first(["a", "b", "c"], "ponies") -> ["a","b","c"]
 */
-_.first = function(array, n = 1) {
-    // test if an aray, if not return []
-    // if n undefined, or is not a number,return array [0]
-    // otherwise, return first n number of elements
-    if(!Array.isArray(array) || n < 0) return [];
-    if((n === 'undefined') || (typeof n !== 'number')) return array[0];
-    return array.slice(0, n);
-    };
 
+_.first = function(array, n = 1) {
+    if(n === undefined || isNaN(n) || n === 1) return array[0];
+    if(n < 0 || !Array.isArray(array)) return [];
+return array.slice(0, n);
+};
 
 /** _.last() 
 * Arguments:
@@ -97,13 +96,14 @@ _.first = function(array, n = 1) {
 *   _.last(["a","b","c"], 2) -> ["b","c"]
 *   _.last(["a", "b", "c"], "ponies") -> ["a","b","c"]
 */
-_.last = function(array, n ) {
-  //  if((!Array.isArray(array) || (n < 0)) return [];
-//    if((n === 'undefined') || (typeOf n !== 'number')) return [0];
-return array.slice(-n);
 
+_.last = function(array, n = 1) {
+  if (n === undefined || isNaN(n) || n === 1) return array[array.length -1];
+  if(n < 0 || !Array.isArray(array)) return [];
+  if(n > array.length) return array;
+  return array.slice(n - 1);
 };
-
+ 
 /** _.each()
 * Arguments:
 *   1) A collection
@@ -120,6 +120,17 @@ return array.slice(-n);
 *      -> should log "a" "b" "c" to the console
 */
 
+_.each = function(collection, func){
+if (Array.isArray(collection)){
+for (var i = 0; i < collection.length; i++){
+  func(collection[i], i, collection);
+    }
+      }else if (typeof collection === 'object'){
+      for(var key in collection){
+          func(collection[key], key, collection);
+        }
+    }
+};
 
 /** _.indexOf()
 * Arguments:
@@ -137,6 +148,14 @@ return array.slice(-n);
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function(array,value){
+    for(var i = 0; i <array.length; i++){
+        if(array[i] === value) {
+            return i;
+        }
+    }
+    return -1;
+};
 
 /** _.filter()
 * Arguments:
@@ -154,6 +173,15 @@ return array.slice(-n);
 *   use _.each in your implementation
 */
 
+_.filter = function filter(array, action) {
+  let result = [];
+  _.each(array, function(value, index, array) {
+    if (action(value, index, array)) {
+      result.push(value);
+    }
+  });
+  return result;
+};
 
 /** _.reject()
 * Arguments:
@@ -167,7 +195,15 @@ return array.slice(-n);
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
+_.reject = function reject(array, action) {
+ let result = [];
+  _.each(array, function(value, index, array) {
+    if (!(action(value, index, array))) {
+      result.push(value);
+    }
+  });
+  return result;
+};
 
 /** _.partition()
 * Arguments:
@@ -187,8 +223,13 @@ return array.slice(-n);
 *   }); -> [[2,4],[1,3,5]]
 }
 */
-
-
+_.partition = function partition(array, action) {
+  let results = [];
+  var truthy = _.filter(array, action);
+  var falsey = _.reject(array, action);
+  results.push(truthy, falsey);
+  return results;
+};
 /** _.unique()
 * Arguments:
 *   1) An array
@@ -199,6 +240,15 @@ return array.slice(-n);
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function unique(array) {
+var uarr = [];
+  _.each(array, function(value, index, array) {
+if(_.indexOf(array, value) === index)
+  uarr.push(value);
+});
+
+return uarr;
+};
 
 /** _.map()
 * Arguments:
@@ -215,7 +265,21 @@ return array.slice(-n);
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
+_.map = function(collection, action){
+var result = [];
 
+if (Array.isArray(collection)){
+for (var i = 0; i < collection.length; i++){
+  result.push(action(collection[i], i, collection));
+  
+    }
+      }else if (typeof collection === 'object'){
+      for(var key in collection){
+         result.push(action(collection[key], key, collection));
+           }
+    }
+    return result;
+};
 
 /** _.pluck()
 * Arguments:
@@ -228,6 +292,16 @@ return array.slice(-n);
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+_.pluck = function(array, property){
+  var result = [];
+ 
+ _.map(array, function(value,index,array ){
+   value =value[property];
+     return result.push(value);
+  });
+  
+  return result;
+}; 
 
 /** _.contains()
 * Arguments:
@@ -243,7 +317,9 @@ return array.slice(-n);
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-
+_.contains = function(array, value){
+  return array.indexOf(value) > -1 ? true : false;
+};
 
 /** _.every()
 * Arguments:
@@ -266,6 +342,19 @@ return array.slice(-n);
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
+_.every = function(collection, test){
+  var result = true;
+  _.each(collection, function(value, index, collection) {
+    if (typeof test != 'function') {
+      if (!collection[index]) {
+        result = false;
+      }
+    }else if (!test(value, index, collection)){
+      result = false;
+    }
+  });
+return result;
+};
 
 /** _.some()
 * Arguments:
@@ -288,6 +377,19 @@ return array.slice(-n);
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, test){
+  var result = false;
+  _.each(collection, function(value, index, collection) {
+    if (typeof test != 'function') {
+      if (collection[index]) {
+        result = true;
+      }
+    }else if (test(value, index, collection)){
+      result = true;
+    }
+  });
+return result;
+};
 
 /** _.reduce()
 * Arguments:
@@ -307,8 +409,16 @@ return array.slice(-n);
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
-
+ 
+ _.reduce = function(array, func, seed){
+   _.each(array, function(element, index, array){
+   
+    if(seed === undefined){seed = array[0]}
+    else{seed = func(seed, element, index);}
+   });
+   return seed;
+ };
+ 
 /** _.extend()
 * Arguments:
 *   1) An Object
@@ -323,6 +433,18 @@ return array.slice(-n);
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(allObjects) {
+  allObjects = allObjects || {};
+  for (var i = 0; i < arguments.length; i++) {
+    if (!arguments[i]) 
+    return;
+  for (var key in arguments[i]) {
+    allObjects[key] = arguments[i][key];
+  }
+  }
+  return allObjects;
+};
 
 
 // This is the proper way to end a javascript library

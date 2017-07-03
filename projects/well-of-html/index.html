@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/custom.css" type="text/css" />
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/notes/notes.js"></script>
+    <title>A Well of HTML</title>
+    <style type="text/css">
+                .example-form {
+    /* Just to center the form on the page, use: margin: 0 auto;*/
+    margin: 20px;
+    width: 400px;
+    /* To see the outline of the form */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+
+.example-form div + div {
+    margin-top: 1em;
+}
+
+.example-form label {
+    /* To make sure that all labels have the same size and are properly aligned */
+    display: inline-block;
+    width: 90px;
+}
+
+.example-form input,
+.example-form textarea {
+    /* To make sure that all text fields have the same font settings
+    By default, textareas have a monospace font */
+    font: 1em sans-serif;
+    /* To give the same size to all text field */
+    width: 300px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /* To harmonize the look & feel of text field border */
+    border: 1px solid #999;
+}
+
+.example-form input:focus,
+.example-form textarea:focus {
+    /* To give a little highlight on active elements */
+    border-color: #000;
+}
+
+.example-form textarea {
+    /* To properly align multiline text fields with their labels */
+    vertical-align: top;
+    /* To give enough room to type some text */
+    height: 5em;
+    /* To allow users to resize any textarea vertically
+    It does not work on every browsers */
+    resize: vertical;
+}
+table {
+    margin: 20px;
+}
+
+table,
+th,
+td {
+    padding: 4px;
+    border: 1px solid black;
+}
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 4px;
+}
+.example-grid {
+    margin: 20px;
+}
+
+.row-img {
+    margin: 4px;
+}
+    </style>
+</head>
+
+<body>
+    <div id="container" class="container">
+        <!-- ALL YOUR MARKUP GOES BELOW HERE -->
+        
+
+        <a href="https://en.wikipedia.org/wiki/Po%27_boy#/media/File:Shrimppoboy.jpg"
+        >Picture of poboy</a> 
+        <img src="img/cherries.jpg" />
+        <h1>New Orleans <small> Food </small> </h1>
+        <h2>Bread <small> Loaf </small> </h2>
+        <h3>Shrimp <small> Gulf of Mexico </small> </h3>
+        <h4>Tasty<small> Food </small></h4>
+        <h5>Fun<small> Party All the Time </small> </h5>
+        <h6>Southern <small> Dirty South </small> </h6>
+        <p>A po' boy (also po-boy, po boy) is a traditional sandwich from Louisiana
+        It almost always consists of meat, which is usually sloppy roast beef or fried 
+        seafood which includes shrimp, crawfish, oysters and crab. The meat is served on 
+        baguette-like New Orleans French bread, known for its crisp crust and fluffy center.[1]</p>
+        
+        <p>The traditional versions are served either hot or cold and include <i> fried shrimp and 
+        oysters. Soft shell crab, catfish, crawfish,</i><b> Louisiana hot sausage</b>, fried chicken breast, 
+        roast beef, and <strong> French fries </strong> are other common variations. The last two are served with gravy.[2]</p>
+        
+        <p>A "dressed" po' boy has romaine lettuce, tomato, pickles, and mayonnaise. Fried <b> seafood </b> 
+        po' boys are often <i>dressed </i> by default with melted butter and sliced pickle rounds. A Louisiana 
+        style hot sauce is optional. Non-seafood <em> po' boys </em> will also often have mustard; the customer is 
+        expected to specify "hot" or "regular" the former being a coarse-grained Creole mustard 
+        and the latter being American yellow mustard.[3]</p>
+        
+        <ul>
+            <li>SHRIMP</li>
+            <li>CRAWFISH</li>
+            <li>OYSTERS</li>
+            <li>CRAB MEAT</li>
+        </ul>
+        
+        <ol>
+            <li>Lettuce</li>
+            <li>Tomato</li>
+            <li>Pickles</li>
+            <li>Mayonaise</li>
+        </ol>
+        
+        <d1>
+            <dt>Roast Beef</dt>
+            <dd>Classic roast beef recipe using rump roast, round roast, or sirloin tip. This slow roasting 
+            method at low heat is good for tougher cuts of beef; the lower heat prevents any gristle from 
+            getting too tough.
+            </dd>
+            
+            <dt>Hot Sausage</dt>
+            <dd>A hot link also referred to as a "red link" is a type of sausage often associated 
+            with the cuisine of the Southern United States, featured commonly as a part of American 
+            barbecue, soul food, and Cajun and Louisiana Creole cuisines. It is sometimes referred 
+            to as a "Louisiana hot link"
+            </dd>
+            
+        </d1>
+        
+        <form class="example-form">
+
+    
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" />
+    </div>
+    <div>
+        <label for="mail">E-mail:</label>
+        <input type="email" id="mail" />
+    </div>
+    <div>
+        <label for="msg">Message:</label>
+        <textarea id="msg"></textarea>
+    </div>
+
+    <div class="button">
+        <button type="submit">Send your message</button>
+    </div>
+
+</form>
+        <table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Best sandwich</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="2">Favorite places to get poboys...</td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr>
+            <td>Genes</td>
+            <td>Roast Beef</td>
+        </tr>
+        <tr>
+            <td>Louisiana Discount</td>
+            <td>Ham</td>
+        </tr>
+        <tr>
+            <td>Domilise</td>
+            <td>Pork Sausage</td>
+        </tr>
+    </tbody>
+</table>
+ <div class="flex-row">
+ <div>
+     Genes<p>4309 Rampart St.</p><p>(504) 947 - 8819</p>
+ </div>
+ <div>
+     Louisiana Discount
+     <p>2170 Louisiana Ave.</p>
+     (504) 899 - 4593
+ </div>
+ <div>
+     Domilise 
+     <p>5240 Annuciation St.</p>
+     (504) 899 - 9126
+ </div>
+ <div>
+     Guy's
+     <p>5959 Magazine St. </p>
+     (504) 891 - 5025
+ </div>
+ <div>
+     Parasol's
+     <p>2533 Constance St </p>
+     (504) 302 - 1543
+ </div>
+ </div>
+ <div class="example-grid">
+  <div class="row">
+      <div class="col-md-2"><img src="img/cherries.jpg" class="row-img"></img>
+      </div>
+      <div class="col-md-10">Cherries are tasty things that grow on trees! You can eat them and feel good about yourself!</div>
+  </div>
+  <div class="row">
+      <div class="col-md-2"><img src="img/black-currant.jpg" class="row-img"></img>
+      </div>
+      <div class="col-md-10">Black Currents are tasty things that grow on bushes! You can eat them and feel good about yourself!</div>
+  </div>
+  <div class="row">
+      <div class="col-md-2"><img src="img/apple-in-grass.jpg" class="row-img"></img>
+      </div>
+      <div class="col-md-10">Apples are tasty things that grow on trees! You can eat them and feel good about yourself! They make great pies!</div>
+  </div>
+</div>
+        <!-- ALL YOUR MARKUP GOES ABOVE HERE -->
+    </div>
+    <script>
+        $(function () {
+            window.opspark.notes.show();
+        });
+    </script>
+</body>
+
+</html>
